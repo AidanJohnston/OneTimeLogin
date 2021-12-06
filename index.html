@@ -9,6 +9,7 @@
 </head>
 <body>
     <h1>BrandName</h1>
+    <a href="pages/phone">Phone</a>
     <div class="login" id="signIn">
         <h2>Sign in</h2>
         <hr>
@@ -21,15 +22,16 @@
         <p class='hide' id="incorrect"> Incorrect username or password</p>
         <hr>
         <h2>New User</h2>
-        <form action="" method="post">
-            <button>SIGN UP</button>
-        </form>
+        <button onclick="displaySignUp();">SIGN UP</button>
     </div>
     <div class="login hide" id="newUser">
+        <button onclick="displaySignIn();">Back</button>
         <h2>Sign Up</h2>
-    </div>
-    <div class="login hide" id="qrCode">
-        <h2>QR Code</h2>
+        <hr>
+        <form action="" method="post">
+            <input type="text" name='Username', placeholder="Username">
+            <input type="email" name='email', placeholder="Email">
+        </form>
     </div>
 </body>
 </html>
