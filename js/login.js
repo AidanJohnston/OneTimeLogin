@@ -1,31 +1,22 @@
-function checkLogin() {
-
-    var username = document.getElementById('username').value;
-    var pwd = document.getElementById('password').value;
+function generateQR() {
 
 	var xmlhttp = new XMLHttpRequest();
+    console.log("QR");
 	xmlhttp.onreadystatechange = function () {
 		//If Request successful
 		if (this.readyState == 4 && this.status == 200) {
-			var response = JSON.parse(this.responseText);
-
             // pwd and username match
-            if (resonse) {
+           
+            response = this.responseText;
 
-            }
-
-            // Dislay incorrect pwd / username
-            else {
-                document.getElementById('incorrect').classList.remove('hide');
+            if (response) {
+                result = document.getElementById('qr');
+                result.innerHTML = '<img src="data:image/png;base64,' + this.responseText + '"/>';
             }
 		}
-
-        else {
-            document.getElementById('incorrect').classList.remove('hide');
-        }
 	};
-	xmlhttp.open("POST", "php/login.php", username, pwd);
+	xmlhttp.open("POST", "php/GenerateQR.php", true);
 	xmlhttp.send();
-
-    return false;
 }
+
+window.onload = generateQR;
