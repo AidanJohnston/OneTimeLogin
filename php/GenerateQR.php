@@ -9,8 +9,7 @@ $key = str_pad($key, 6, 0, STR_PAD_LEFT);
 
 $conn = connect();
 
-$sql = "INSERT INTO sessions
-        VALUES ('$id', '$key')";
+$sql = "INSERT INTO sessions (uid, code) VALUES ('$id', '$key')";
 
 $result = mysqli_query($conn,$sql);
 
@@ -19,7 +18,10 @@ QRcode::png($id, false, 'L', 10, 2);
 $png = base64_encode( ob_get_contents() );
 ob_end_clean();
 
-echo $png;
+$json['file'] = $png;
+$json['uid'] = $id;
+
+echo json_encode($json);
 
 $conn->close();
 ?>

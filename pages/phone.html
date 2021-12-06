@@ -5,11 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="../js/phone.js"></script> 
-    <link rel="stylesheet" href="../css/master.css"/>
-    <title>Document</title>
+    <link rel="stylesheet" type = "text/css" href="../css/master.css"/>
+    <title>Scanner</title>
 </head>
+
 <body>
-    <video id="qrscannervideo"></video>
-    <div id="code"></div>
+	<div id ="header"> 
+			<h1>QR Password Generator</h1>
+	</div>
+		
+	<div id = "scanner_container">
+		<div id ="scanner">
+			<h2>QR Scanner</h>
+			<div class="hide" id="incorrect"></div>
+			<hr>
+			<video id="qrscannervideo"></video>
+		</div>
+    </div>
+	<div id = "password_header">
+            <h2>Token Upload</h2>
+            <input type="file" name="" id="file">
+            <hr>
+    </div>
+	<div class='hide' id = "code_header">
+			<h2>Password</h>
+			<hr>
+            <div id ="code"></div>
+	</div>
 </body>
 </html>

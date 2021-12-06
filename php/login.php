@@ -1,22 +1,37 @@
 <?php
 
-
+include('connect.php');
 $conn = connect();
 
-//$sql = "SELECT pwd FROM users WHERE user_name = {$_POST['username']}";
+$uid = mysqli_real_escape_string($conn,$_POST['uid']);
+$code = mysqli_real_escape_string($conn,$_POST['code']);
 
-//$result = mysqli_query($conn,$sql);
 
-//echo json_encode(mysqli_fetch_all($result));
-echo "test";
-foreach ($_GET as $value)
-    echo $value;
-echo "test";
-foreach ($_POST as $value)
-    echo $value;
-echo "test";
-foreach ($_REQUEST as $value)
-    echo $value;
+$sql = "SELECT token FROM sessions WHERE uid = '$uid' AND code = '$code'";
+
+$result = mysqli_fetch_all(mysqli_query($conn,$sql));
+
+if ($result) {
+    $sql = "SELECT uid FROM users WHERE password = '{$result[0][0]}'";
+    $result = mysqli_fetch_all(mysqli_query($conn,$sql));
+
+    if ($result) {
+        $response['errorcode'] = 0;
+        $response['uid'] = $result[0][0];
+    }
+    else {
+        $response['errorcode'] = 1;
+        $response['sql'] = $sql;
+    }
+
+}
+
+else {
+    $response['errorcode'] = 1;
+    $response['sql'] = $sql;
+}
+
+echo json_encode($response);
 
 $conn->close();
 

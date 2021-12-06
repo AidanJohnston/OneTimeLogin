@@ -8,18 +8,21 @@
     <title>BrandName</title>
 </head>
 <body>
-    <h1>BrandName</h1>
+    <div id ="header"> 
+        <h1>Generic University Login</h1>
+    </div>
+    
     <a href="pages/phone">Phone</a>
     <div class="login" id="signIn">
         <h2>Sign in</h2>
         <hr>
         <div id="qr"></div>
         <button onclick="generateQR();">Refresh</button>
-        <form onsubmit="return checkLogin();" method="post">
-            <input type="password" name="code" placeholder="Code" id="Code">
+        <form onsubmit="return signIn();" method="post">
+            <input type="password" name="code" placeholder="Code" id="password">
             <button type="submit" name="button">SIGN IN</button>
         </form>
-        <p class='hide' id="incorrect"> Incorrect username or password</p>
+        <p class='hide' id="incorrect">Incorrect Code or token given, rescan code</p>
         <hr>
         <h2>New User</h2>
         <button onclick="displaySignUp();">SIGN UP</button>
@@ -28,9 +31,10 @@
         <button onclick="displaySignIn();">Back</button>
         <h2>Sign Up</h2>
         <hr>
-        <form action="" method="post">
-            <input type="text" name='Username', placeholder="Username">
-            <input type="email" name='email', placeholder="Email">
+        <form action="./php/newUser.php" method="post">
+            <input type="text" name='username', placeholder="username">
+            <input type="email" name='email', placeholder="email">
+            <button type="submit" name="button">SIGN UP</button>
         </form>
     </div>
 </body>
