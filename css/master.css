@@ -62,3 +62,8 @@ button:hover {
 #incorrect {
   color: #e85d5d;
 }
+
+#qr img{
+  width: 250px;
+  height: 250px;
+}
