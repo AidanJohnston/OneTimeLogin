@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/master.css"/>
     <script src="js/login.js"></script> 
@@ -13,9 +12,10 @@
     <div class="login" id="signIn">
         <h2>Sign in</h2>
         <hr>
+        <div id="qr"></div>
+        <button onclick="generateQR();">Refresh</button>
         <form onsubmit="return checkLogin();" method="post">
-            <input type="text" name="Username" placeholder="Username" id="username">
-            <input type="password" name="password" placeholder="Password" id="password">
+            <input type="password" name="code" placeholder="Code" id="Code">
             <button type="submit" name="button">SIGN IN</button>
         </form>
         <p class='hide' id="incorrect"> Incorrect username or password</p>
